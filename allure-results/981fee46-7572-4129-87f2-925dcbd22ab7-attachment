@@ -1,0 +1,5 @@
+请求地址：
+http://129.28.122.208:8089/admin/login
+请求方式：POST
+请求头：{Content-Type=Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0Mjk4MzE3ODY3OCwiZXhwIjoxNzQzMDY5NTc4fQ.XwX71gHWNJ98NSthVZM6CayZES5L2RnJJQB7TZWHL8hlcmdIqmLW1zL3kQv4ZRc7A-0gW6YDKR4X9SbxgjAMrQ}
+请求参数：{"username":"test","password":"1234567"}

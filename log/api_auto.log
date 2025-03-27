@@ -1,0 +1,132 @@
+2025-03-26 18:14:04 INFO  AutoLogger:32 - ============自动化测试开始============
+2025-03-26 18:14:04 INFO  AutoLogger:33 - 开始读取testng.xml中parameter标签的value值 
+2025-03-26 18:14:04 INFO  AutoLogger:44 - testng.xml中parameter标签的value值,已经通过注解 @Parameters 成功获取
+2025-03-26 18:14:04 INFO  AutoLogger:23 - 开始读取 Excel 路径配置: 文件名=/excel.properties, key=excelCasePath
+2025-03-26 18:14:04 INFO  AutoLogger:23 - 开始加载配置文件：/excel.properties
+2025-03-26 18:14:04 INFO  AutoLogger:33 - 成功读取配置文件：/excel.properties
+2025-03-26 18:14:04 INFO  AutoLogger:37 - 成功读取 Excel 路径: src/test/resources/case_mall.xlsx
+2025-03-26 18:14:04 INFO  AutoLogger:22 - 获取到Excel路径: src/test/resources/case_mall.xlsx
+2025-03-26 18:14:04 INFO  AutoLogger:31 - 成功加载Excel文件: src/test/resources/case_mall.xlsx
+2025-03-26 18:14:05 INFO  AutoLogger:34 - 读取Excel数据成功，记录条数: 3
+2025-03-26 18:14:05 INFO  AutoLogger:38 - ✅ 成功读取测试数据，共 3 条！
+2025-03-26 18:14:05 INFO  AutoLogger:33 - 参数替换前：
+URL: 
+ ${ip}/admin/login
+Params: {"username":"${username1}","password":"${password1}"}
+ExpectedResult: {"code": 200,"message": "操作成功"}
+SQL: SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = '${username1}';
+
+2025-03-26 18:14:05 INFO  AutoLogger:57 - 参数替换后：
+URL: 
+ http://129.28.122.208:8089/admin/login
+Params: {"username":"test","password":"123456"}
+ExpectedResult: {"code": 200,"message": "操作成功"}
+SQL: SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = 'test';
+
+2025-03-26 18:14:05 INFO  AutoLogger:25 - 数据库驱动加载成功！
+2025-03-26 18:14:05 INFO  AutoLogger:23 - 开始加载配置文件：/database.properties
+2025-03-26 18:14:05 INFO  AutoLogger:33 - 成功读取配置文件：/database.properties
+2025-03-26 18:14:06 INFO  AutoLogger:48 - 数据库连接成功！
+2025-03-26 18:14:07 INFO  AutoLogger:40 - 【POST 请求】URL: 
+ http://129.28.122.208:8089/admin/login，Params: {"username":"test","password":"123456"}
+2025-03-26 18:14:08 INFO  AutoLogger:59 - 【响应结果】：
+{"code":200,"message":"操作成功","data":{"tokenHead":"Bearer","tokenHeader":"Authorization","token":"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0Mjk4NDA0ODE3NSwiZXhwIjoxNzQzMDcwNDQ4fQ.L_2zTLRDUYbrqwGZnrS_InDPqHlpD1nnFSCdo75Ng_nAq33QONgZfXgQ64cpEHkP-Eo5Ss-VKjkS7ET6oJGCfA"}}
+2025-03-26 18:14:08 INFO  AutoLogger:57 - 登录成功，token 已保存：eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0Mjk4NDA0ODE3NSwiZXhwIjoxNzQzMDcwNDQ4fQ.L_2zTLRDUYbrqwGZnrS_InDPqHlpD1nnFSCdo75Ng_nAq33QONgZfXgQ64cpEHkP-Eo5Ss-VKjkS7ET6oJGCfA
+2025-03-26 18:14:08 INFO  AutoLogger:50 - ✅ 断言通过 - 字段：code，值：200
+2025-03-26 18:14:08 INFO  AutoLogger:50 - ✅ 断言通过 - 字段：message，值：操作成功
+2025-03-26 18:14:08 INFO  AutoLogger:56 - 🎉 所有字段断言通过！
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始加载配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 成功读取配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:48 - 数据库连接成功！
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始读取 Excel 路径配置: 文件名=/excel.properties, key=excelCasePath
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始加载配置文件：/excel.properties
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 成功读取配置文件：/excel.properties
+2025-03-26 18:14:08 INFO  AutoLogger:37 - 成功读取 Excel 路径: src/test/resources/case_mall.xlsx
+2025-03-26 18:14:08 INFO  AutoLogger:35 - 准备批量写入 Excel，文件路径：src/test/resources/case_mall.xlsx
+2025-03-26 18:14:08 INFO  AutoLogger:53 - 写入 Excel 成功，共写入 2 条数据。
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 参数替换前：
+URL: 
+http://129.28.122.208:8089/admin/login
+Params: {"username":"${username2}","password":"${password2}"}
+ExpectedResult: {"code":500,"message":"登录异常:用户不存在"}
+SQL: SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = '${username2}';
+
+2025-03-26 18:14:08 INFO  AutoLogger:57 - 参数替换后：
+URL: 
+http://129.28.122.208:8089/admin/login
+Params: {"username":"testA","password":"123456"}
+ExpectedResult: {"code":500,"message":"登录异常:用户不存在"}
+SQL: SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = 'testA';
+
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始加载配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 成功读取配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:48 - 数据库连接成功！
+2025-03-26 18:14:08 INFO  AutoLogger:40 - 【POST 请求】URL: 
+http://129.28.122.208:8089/admin/login，Params: {"username":"testA","password":"123456"}
+2025-03-26 18:14:08 INFO  AutoLogger:59 - 【响应结果】：
+{"code":500,"message":"登录异常:用户不存在","data":null}
+2025-03-26 18:14:08 WARN  AutoLogger:59 - 登录失败，未提取 token。响应为：{"code":500,"message":"登录异常:用户不存在","data":null}
+2025-03-26 18:14:08 INFO  AutoLogger:50 - ✅ 断言通过 - 字段：code，值：500
+2025-03-26 18:14:08 INFO  AutoLogger:50 - ✅ 断言通过 - 字段：message，值：登录异常:用户不存在
+2025-03-26 18:14:08 INFO  AutoLogger:56 - 🎉 所有字段断言通过！
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始加载配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 成功读取配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:48 - 数据库连接成功！
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始读取 Excel 路径配置: 文件名=/excel.properties, key=excelCasePath
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始加载配置文件：/excel.properties
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 成功读取配置文件：/excel.properties
+2025-03-26 18:14:08 INFO  AutoLogger:37 - 成功读取 Excel 路径: src/test/resources/case_mall.xlsx
+2025-03-26 18:14:08 INFO  AutoLogger:35 - 准备批量写入 Excel，文件路径：src/test/resources/case_mall.xlsx
+2025-03-26 18:14:08 INFO  AutoLogger:53 - 写入 Excel 成功，共写入 2 条数据。
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 参数替换前：
+URL: 
+http://129.28.122.208:8089/admin/login
+Params: {"username":"${username3}","password":"${password3}"}
+ExpectedResult: {"code":500,"message":"登录异常:密码不正确"}
+SQL: SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = '${username3}';
+
+2025-03-26 18:14:08 INFO  AutoLogger:57 - 参数替换后：
+URL: 
+http://129.28.122.208:8089/admin/login
+Params: {"username":"test","password":"1234567"}
+ExpectedResult: {"code":500,"message":"登录异常:密码不正确"}
+SQL: SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = 'test';
+
+2025-03-26 18:14:08 INFO  AutoLogger:23 - 开始加载配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:33 - 成功读取配置文件：/database.properties
+2025-03-26 18:14:08 INFO  AutoLogger:48 - 数据库连接成功！
+2025-03-26 18:14:08 INFO  AutoLogger:40 - 【POST 请求】URL: 
+http://129.28.122.208:8089/admin/login，Params: {"username":"test","password":"1234567"}
+2025-03-26 18:14:09 INFO  AutoLogger:59 - 【响应结果】：
+{"code":500,"message":"登录异常:密码不正确","data":null}
+2025-03-26 18:14:09 WARN  AutoLogger:59 - 登录失败，未提取 token。响应为：{"code":500,"message":"登录异常:密码不正确","data":null}
+2025-03-26 18:14:09 INFO  AutoLogger:50 - ✅ 断言通过 - 字段：code，值：500
+2025-03-26 18:14:09 INFO  AutoLogger:50 - ✅ 断言通过 - 字段：message，值：登录异常:密码不正确
+2025-03-26 18:14:09 INFO  AutoLogger:56 - 🎉 所有字段断言通过！
+2025-03-26 18:14:09 INFO  AutoLogger:23 - 开始加载配置文件：/database.properties
+2025-03-26 18:14:09 INFO  AutoLogger:33 - 成功读取配置文件：/database.properties
+2025-03-26 18:14:09 INFO  AutoLogger:48 - 数据库连接成功！
+2025-03-26 18:14:09 INFO  AutoLogger:23 - 开始读取 Excel 路径配置: 文件名=/excel.properties, key=excelCasePath
+2025-03-26 18:14:09 INFO  AutoLogger:23 - 开始加载配置文件：/excel.properties
+2025-03-26 18:14:09 INFO  AutoLogger:33 - 成功读取配置文件：/excel.properties
+2025-03-26 18:14:09 INFO  AutoLogger:37 - 成功读取 Excel 路径: src/test/resources/case_mall.xlsx
+2025-03-26 18:14:09 INFO  AutoLogger:35 - 准备批量写入 Excel，文件路径：src/test/resources/case_mall.xlsx
+2025-03-26 18:14:09 INFO  AutoLogger:53 - 写入 Excel 成功，共写入 2 条数据。
