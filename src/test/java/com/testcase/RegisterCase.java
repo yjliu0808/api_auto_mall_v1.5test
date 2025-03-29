@@ -1,20 +1,14 @@
 package com.testcase;
 
-import com.alibaba.fastjson.JSONPath;
 import com.databaseutils.SqlUtils;
 import com.entity.CaseInfo;
 import com.excelutils.ReadExcel;
-import com.globaldata.GlobalSaveData;
 import com.httprequest.GetHeaders;
-import com.parameters.BaseParams;
-import com.parameters.LoginParams;
 import com.parameters.ParamsReplace;
 import com.parameters.RegisterParams;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 @Epic("用户模块")

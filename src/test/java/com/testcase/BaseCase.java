@@ -1,11 +1,13 @@
 package com.testcase;
 
+import com.alibaba.fastjson.JSONPath;
 import com.caseutils.AssertResponseResult;
 import com.constants.ExcelConstants;
 import com.databaseutils.SqlUtils;
 import com.entity.CaseInfo;
 import com.excelutils.BatchWriteToExcel;
 import com.excelutils.GetExcelPath;
+import com.globaldata.GlobalSaveData;
 import com.httprequest.HttpRequest;
 import com.loggerutil.BaseLogger;
 import com.parameters.BaseParams;
@@ -264,7 +266,41 @@ public class BaseCase extends BaseLogger {
         System.out.println("==========【断言与写回结束】用例ID: " + caseInfo.getCaseId() + " ==========\n");
     }
 
+    /**
+     * 通用响应字段提取方法
+     * @param response 接口响应内容（JSON）
+     * @param extractConfig 可传值，如："$.data.token=${token};$.data.id=${userId}"
+     * ✅ "$.data.token=${token}" 的含义：
+     * $.data.token	是一个 JSONPath 表达式，用于从接口响应 JSON 中提取对应的值
+     * ${token}	是一个 变量名，你希望将提取到的值存到全局变量池（Map）中，以这个作为 key
+     */
+    public static void saveResponseResult(String response, String extractConfig) {
+        if (extractConfig == null || extractConfig.trim().isEmpty()) {
+            logger.info("未配置提取表达式，跳过提取变量");
+            return;
+        }
 
+        String[] extracts = extractConfig.split(";");
+        for (String extract : extracts) {
+            if (!extract.contains("=")) continue;
+
+            String[] parts = extract.split("=", 2);
+            String jsonPath = parts[0].trim();
+            String saveKey = parts[1].trim();
+
+            try {
+                Object value = JSONPath.read(response, jsonPath);
+                if (value != null) {
+                    GlobalSaveData.put(saveKey, value.toString());
+                    logger.info("已提取变量：" + saveKey + " = " + value);
+                } else {
+                    logger.warn("未提取到值，jsonPath=" + jsonPath);
+                }
+            } catch (Exception e) {
+                logger.error("提取变量异常，jsonPath=" + jsonPath + "，配置=" + extract, e);
+            }
+        }
+    }
 
     // ===== 工具方法 =====
     protected String nullToEmpty(String str) {

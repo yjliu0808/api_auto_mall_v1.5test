@@ -31,8 +31,8 @@ public class LoginCase extends BaseCase {
         logCaseInfo();
         //发起请求
         String response = sendRequest();
-        //保存请求结果token
-        saveResponseResult(response);
+        //保存响应结果token
+        saveResponseResult(response,"$.data.token=${token}");
         //批量回写到excel
         finishWriteBackAndAssert(caseInfo, response);
     }
@@ -41,15 +41,5 @@ public class LoginCase extends BaseCase {
         //1、从excel读取用例信息
         return ReadExcel.readExcel(startSheetIndex, sheetNum).toArray();
     }
-    public void saveResponseResult(String response) {
-        String token = (String) JSONPath.read(response, "$.data.token");
-        Integer code = (Integer) JSONPath.read(response, "$.code");
 
-        if (code != null && code == 200 && token != null) {
-            GlobalSaveData.put("${token}", token);
-            logger.info("登录成功，token 已保存：" + token);
-        } else {
-            logger.warn("登录失败，未提取 token。响应为：" + response);
-        }
-    }
 }
