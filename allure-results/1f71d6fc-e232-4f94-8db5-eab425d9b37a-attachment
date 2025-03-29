@@ -1,0 +1,7 @@
+执行 SQL：SELECT * from ums_admin where username = "test0329d3V";
+
+请求前：null
+请求后：29
+预期差值：1
+实际差值：1
+断言结果：✅ 通过

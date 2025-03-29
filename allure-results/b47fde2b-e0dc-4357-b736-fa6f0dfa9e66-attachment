@@ -1,0 +1,7 @@
+期望结果：
+{"code": 200,"message": "操作成功"}
+
+实际结果：
+{"code":200,"message":"操作成功","data":{"id":29,"username":"test0329d3V","password":"$2a$10$U4xvGlk92rQIZYRi3adkHuxGPRPn0g7idUB7uYvuulxSouICaDhgy","icon":null,"email":"test0329zhP@mail.com","nickName":"测测YQc","note":"自动化测试注册","createTime":"2025-03-29T01:06:43.524+00:00","loginTime":null,"status":1}}
+
+断言结果：✅ 通过

@@ -28,6 +28,7 @@ public class RegisterCase extends BaseCase {
         //参数化替换
         ParamsReplace.paramsReplace(caseInfo);
         headersThreadLocal.set(GetHeaders.getLoginHeaders());
+        //执行请求前查询数据库sql
         sqlBeforeThreadLocal.set(SqlUtils.querySingleValue(caseInfo.getSql()));
         logCaseInfo();
         //发起请求

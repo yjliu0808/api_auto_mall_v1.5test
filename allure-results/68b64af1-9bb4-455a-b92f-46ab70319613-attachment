@@ -1,0 +1,14 @@
+用例编号：3
+用例描述：登录不成功：密码不正确
+请求URL：
+http://129.28.122.208:8089/admin/login
+请求参数类型：json
+请求方式：post
+请求参数：{"username":"test","password":"1234567"}
+期望结果：{"code":500,"message":"登录异常:密码不正确"}
+SQL：SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = 'test';
+
+预期SQL差值：0

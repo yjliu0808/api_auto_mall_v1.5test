@@ -1,0 +1,10 @@
+用例编号：1
+用例描述：注册成功
+请求URL：http://129.28.122.208:8089/admin/register
+请求参数类型：json
+请求方式：post
+请求参数：{"id":null,"username":"test0329AVg","password":"123456","nickName":"test7XN","email":"test0329QdM@outlook.com","note":"自动化测试注册","status":1}
+期望结果：{"code": 200,"message": "操作成功"}
+SQL：SELECT * from ums_admin where username = "test0329AVg";
+
+预期SQL差值：1
