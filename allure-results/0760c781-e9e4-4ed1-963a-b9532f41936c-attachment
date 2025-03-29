@@ -1,0 +1,10 @@
+执行 SQL：SELECT COUNT(*) 
+FROM ums_admin_login_log l
+JOIN ums_admin a ON l.admin_id = a.id
+WHERE a.username = 'test';
+
+请求前：190
+请求后：191
+预期差值：1
+实际差值：1
+断言结果：✅ 通过

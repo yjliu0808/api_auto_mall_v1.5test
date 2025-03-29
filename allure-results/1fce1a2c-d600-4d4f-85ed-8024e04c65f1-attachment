@@ -1,0 +1,7 @@
+期望结果：
+{"code": 200,"message": "操作成功"}
+
+实际结果：
+{"code":200,"message":"操作成功","data":{"id":25,"username":"test0328Vja","password":"$2a$10$uy6P4Z/5e8J7Ojrv4/Z/2e7KsWlyBi5P03OSnFFD5iN.APzpTlgS2","icon":null,"email":"test03286CW@qq.com","nickName":"爱测JwQ","note":"自动化测试注册","createTime":"2025-03-28T09:32:53.381+00:00","loginTime":null,"status":1}}
+
+断言结果：✅ 通过

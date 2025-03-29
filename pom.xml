@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>api_auto_mall_v1.4</artifactId>
+    <artifactId>api_auto_mall_v1.6</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

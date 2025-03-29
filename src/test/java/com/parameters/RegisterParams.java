@@ -17,7 +17,8 @@ public class RegisterParams {
         GlobalSaveData.put("${username}", GeneralUtils.generateRandomUsername());
         GlobalSaveData.put("${password}", "123456");
         GlobalSaveData.put("${nickName}",GeneralUtils.generateRandomNickName() );
-        GlobalSaveData.put("${note}", "自动化测试注册，"+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        GlobalSaveData.put("${note}", "自动化测试注册");
+        GlobalSaveData.put("${email}", GeneralUtils.generateRandomEmail());
         GlobalSaveData.put("${status}","1");
        }
 }

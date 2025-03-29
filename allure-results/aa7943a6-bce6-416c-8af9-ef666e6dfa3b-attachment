@@ -1,0 +1,4 @@
+请求地址：http://129.28.122.208:8089/admin/register
+请求方式：POST
+请求头：{authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzE1NDM3MjA2MiwiZXhwIjoxNzQzMjQwNzcyfQ.FP9lCKTeYNBMhEvCk57BwqPI0Ka5RIHFc-rlqLmn-s2orUilJ-KIZstBipiVUWryuUQkkCLgfrsOMh3s1y1YVw, Content-Type=application/json}
+请求参数：{"id":null,"username":"test0328Vja","password":"123456","nickName":"爱测JwQ","email":"test03286CW@qq.com","note":"自动化测试注册","status":1}

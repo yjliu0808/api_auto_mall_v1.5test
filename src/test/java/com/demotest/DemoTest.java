@@ -24,11 +24,7 @@ public class DemoTest {
         //测试读取properties配置文件
         //Properties properties = ReadProperties.readProperties("/excel.properties");
         //测试读取excel文件数据
-        List<CaseInfo> caseInfoList = ReadExcel.readExcel("/excel.properties", "excelCasePath", 0, 1);
-        for (CaseInfo caseInfo : caseInfoList) {
-            System.out.println(caseInfo);
 
-        }
     }
 
 

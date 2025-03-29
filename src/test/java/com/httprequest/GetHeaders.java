@@ -28,7 +28,7 @@ public class GetHeaders extends BaseLogger {
         Map<String, String> headersMap = new HashMap<>();
         headersMap.put("Content-Type", "application/json");
         String token = GlobalSaveData.get("${token}");
-        headersMap.put("Content-Type", "Bearer "+token);
+        headersMap.put("authorization", "Bearer "+token);
         return headersMap;
     }
 

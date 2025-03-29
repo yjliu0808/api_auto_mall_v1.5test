@@ -1,0 +1,4 @@
+请求地址：http://129.28.122.208:8089/admin/register
+请求方式：POST
+请求头：{Content-Type=Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzA2ODczOTUyMywiZXhwIjoxNzQzMTU1MTM5fQ.FRspdZxdi5oie9FRc6mir_J5LqezjTGivDG3k1wPZRbUkpHoNzr_Mzm32Z4jM2h9Do3xh7zXFusGFllzb2EGqQ}
+请求参数：{"id":null,"username":"test0327QOt","password":"123456","nickName":"测测7gP","email":"${email}","note":自动化测试注册，2025-03-27 17:45,"status":1}

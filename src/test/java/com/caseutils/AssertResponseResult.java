@@ -24,10 +24,14 @@ public class AssertResponseResult extends BaseLogger {
      */
     public static boolean assertResponseResult(CaseInfo caseInfo, String responseResult) {
         boolean assertResult = true;
-
         String expectedResultJson = caseInfo.getExpectedResult();
+
+        logger.info("【断言开始】用例ID: " + caseInfo.getCaseId());
+        logger.info("【期望JSON】" + expectedResultJson);
+        logger.info("【实际响应】" + responseResult);
+
         if (expectedResultJson == null || expectedResultJson.trim().isEmpty()) {
-            logger.warn("【警告】用例中未设置期望结果，跳过断言！");
+            logger.warn("⚠️ 跳过断言：未设置期望结果");
             return true;
         }
 
@@ -37,11 +41,14 @@ public class AssertResponseResult extends BaseLogger {
             String expectedKey = entry.getKey();
             Object expectedValue = entry.getValue();
 
-            // 从响应中提取实际值
-            Object actualValue = JSONPath.read(responseResult, "$." + expectedKey);
+            Object actualValue = null;
+            try {
+                actualValue = JSONPath.read(responseResult, "$." + expectedKey);
+            } catch (Exception e) {
+                logger.warn("⚠️ JSONPath 提取失败：字段 $" + expectedKey + " 不存在或格式错误！");
+            }
 
-            // 断言判断
-            if (!expectedValue.equals(actualValue)) {
+            if (!String.valueOf(expectedValue).equals(String.valueOf(actualValue))) {
                 logger.info("❌ 断言失败 - 字段：" + expectedKey +
                         "，期望值：" + expectedValue +
                         "，实际值：" + actualValue);
@@ -58,4 +65,5 @@ public class AssertResponseResult extends BaseLogger {
 
         return assertResult;
     }
+
 }

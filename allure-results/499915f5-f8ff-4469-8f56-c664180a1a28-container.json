@@ -1,0 +1,1 @@
+{"uuid":"499915f5-f8ff-4469-8f56-c664180a1a28","name":"com.caseutils.TestngXmlParameters","children":["0dccb06a-1be9-4673-b6b2-6aff950c3a6b"],"befores":[{"name":"setParameters","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1743068253486,"stop":1743068253503}],"afters":[],"start":1743068253384,"stop":1743068253946}

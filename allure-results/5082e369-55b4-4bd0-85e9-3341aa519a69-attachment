@@ -1,0 +1,7 @@
+期望结果：
+{"code": 200,"message": "操作成功"}
+
+实际结果：
+{"code":200,"message":"操作成功","data":{"tokenHead":"Bearer","tokenHeader":"Authorization","token":"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzE1MzY3NzY2MSwiZXhwIjoxNzQzMjQwMDc3fQ.-_ur_30syN8Sd5pWu6XaVUvFIYSX7XvK0Q8c7kv8iYZfdHo3zUcPNIZrRBT8v2a2F8WoG2_suEFi0e7g0SQCRg"}}
+
+断言结果：✅ 通过

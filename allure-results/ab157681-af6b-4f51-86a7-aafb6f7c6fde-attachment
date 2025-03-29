@@ -1,0 +1,4 @@
+请求地址：http://129.28.122.208:8089/admin/register
+请求方式：POST
+请求头：{authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzE1MzE2ODQ1MSwiZXhwIjoxNzQzMjM5NTY4fQ.L0QzD1jsgAC8i2Wsc7bFA5rnOd98Xa90HA5qAM_PztTljbnTe1bqpfTdKIkevp3J_vnTzLbk_9YpI9V2pgDPUg, Content-Type=application/json}
+请求参数：{"id":null,"username":"${username}","password":"${password}","nickName":"${nickName}","email":"${email}","note":${note},"status":${status}}

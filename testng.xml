@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="线上环境-自动化测试框架-mall项目-Demo">
-    <test name="登录">
+<suite name="线上环境-自动化测试框架-mall项目-Demo">                                                                                                         <test name="用户模块">
         <classes>
-            <!--需要初始化的数据，通过  @Parameters先执行传入-->
-            <class name="com.caseutils.TestngXmlParameters">
-                <!--propertiesFileName是excel的配置文件名称（前缀加/）-->
-                <parameter name="propertiesFileName" value="/excel.properties"></parameter>
-                <!--propertiesFileParamsName是excel的配置文件里面的key值-->
-                <parameter name="propertiesFileParamsName" value="excelCasePath"></parameter>
-                <!--startSheetIndex是读取excel中测试用例时，需要从哪个sheet开始的值-->
-                <parameter name="startSheetIndex" value="0"></parameter>
-                <!--sheetNum是读取excel中测试用例时，每次读取几个sheet的值-->
-                <parameter name="sheetNum" value="1"></parameter>
+            <class name="com.testcase.LoginCase">
+                <parameter name="startSheetIndex" value="0"/>
+                <parameter name="sheetNum" value="1"/>
             </class>
-            <!--这是执行登录接口测试类-->
-            <class name="com.testcase.LoginCase"></class>
-          <!--  <class name="com.testcase.RegisterCase"></class>-->
+            <class name="com.testcase.RegisterCase">
+                <parameter name="startSheetIndex" value="1"/>
+                <parameter name="sheetNum" value="1"/>
+            </class>
         </classes>
     </test>
+
 </suite>

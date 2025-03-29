@@ -1,0 +1,5 @@
+请求地址：
+ http://129.28.122.208:8089/admin/login
+请求方式：POST
+请求头：{Content-Type=application/json}
+请求参数：{"username":"test","password":"123456"}

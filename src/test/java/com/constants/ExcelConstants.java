@@ -10,4 +10,6 @@ public class ExcelConstants {
     public static final int RESPONSE_RESULT_COLUMN_INDEX = 9;
     //sql断言回写列号cell--对应excel的实际结果
     public static final int ASSERT_SQL_RESULT_COLUMN_INDEX  = 10;
+    //excel测试用例的路径
+    public static final String excelCasePath = "src/test/resources/case_mall.xlsx";
 }
