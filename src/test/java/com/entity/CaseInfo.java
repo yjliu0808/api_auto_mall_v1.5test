@@ -11,6 +11,8 @@ import cn.afterturn.easypoi.excel.annotation.Excel;
 public class CaseInfo {
     @Excel(name = "用例编号" )
     private int caseId;
+    @Excel(name = "接口模块名称")
+    private String interfaceName;
     @Excel(name = "用例描述" )
     private String caseDesc;
     @Excel(name = "url" )
@@ -30,8 +32,14 @@ public class CaseInfo {
     public CaseInfo() {
     }
 
-    public CaseInfo(int caseId, String caseDesc, String url, String contentType, String type, String params, String expectedResult, String sql, Integer expectedSqlDiff) {
+    @Override
+    public String toString() {
+        return caseDesc; // 👈 只返回用例描述
+    }
+
+    public CaseInfo(int caseId, String interfaceName, String caseDesc, String url, String contentType, String type, String params, String expectedResult, String sql, Integer expectedSqlDiff) {
         this.caseId = caseId;
+        this.interfaceName = interfaceName;
         this.caseDesc = caseDesc;
         this.url = url;
         this.contentType = contentType;
@@ -41,10 +49,6 @@ public class CaseInfo {
         this.sql = sql;
         this.expectedSqlDiff = expectedSqlDiff;
     }
-    @Override
-    public String toString() {
-        return caseDesc; // 👈 只返回用例描述
-    }
 
     public int getCaseId() {
         return caseId;
@@ -52,6 +56,14 @@ public class CaseInfo {
 
     public void setCaseId(int caseId) {
         this.caseId = caseId;
+    }
+
+    public String getInterfaceName() {
+        return interfaceName;
+    }
+
+    public void setInterfaceName(String interfaceName) {
+        this.interfaceName = interfaceName;
     }
 
     public String getCaseDesc() {

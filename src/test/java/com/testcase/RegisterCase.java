@@ -1,10 +1,7 @@
 package com.testcase;
 
-import com.databaseutils.SqlUtils;
 import com.entity.CaseInfo;
 import com.excelutils.ReadExcel;
-import com.httprequest.GetHeaders;
-import com.parameters.ParamsReplace;
 import com.parameters.RegisterParams;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -14,26 +11,22 @@ import org.testng.annotations.Test;
 @Epic("用户模块")
 @Feature("注册功能")
 public class RegisterCase extends BaseCase {
+
+    /**
+     * 注册接口测试方法，使用统一执行流程
+     */
     @Test(description = "注册接口测试", dataProvider = "datas")
-    public void registerLogin(CaseInfo caseInfo) {
-        caseInfoThreadLocal.set(caseInfo);
-        //参数化赋值
-        RegisterParams.paramsSetValue();
-        //参数化替换
-        ParamsReplace.paramsReplace(caseInfo);
-        headersThreadLocal.set(GetHeaders.getLoginHeaders());
-        //执行请求前查询数据库sql
-        sqlBeforeThreadLocal.set(SqlUtils.querySingleValue(caseInfo.getSql()));
-        logCaseInfo();
-        //发起请求
-        String response = sendRequest();
-        //批量回写到excel
-        finishWriteBackAndAssert(caseInfo, response);
+    public void testRegister(CaseInfo caseInfo) {
+        executeTestCase(caseInfo, RegisterParams::paramsSetValue);
     }
+
+    /**
+     * 数据提供者：读取 Excel 注册用例
+     */
     @DataProvider(name = "datas")
     public Object[] datas() throws Exception {
-        //1、从excel读取用例信息
         return ReadExcel.readExcel(startSheetIndex, sheetNum).toArray();
     }
 
+    // 不重写 extractResponseVars()，表示该接口不提取响应字段
 }
