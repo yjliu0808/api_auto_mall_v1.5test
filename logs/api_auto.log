@@ -1,171 +1,171 @@
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 📢 ==================【自动化测试开始】==================
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 📂 Excel路径: src/test/resources/case_mall.xlsx
-[2025-03-30 19:31:03] INFO  [AutoLogger:28] - 成功加载Excel文件: src/test/resources/case_mall.xlsx
-[2025-03-30 19:31:03] INFO  [AutoLogger:31] - 读取Excel数据成功，记录条数: 3
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 🧪【接口模块】：登录功能
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 🔢【用例编号】：1
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 📝【用例描述】：登录成功
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 🌐【接口地址】：${ip}/admin/login
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - --------------------------------------------------------
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 参数替换前：
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - URL: ${ip}/admin/login
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - Params: {"username":"${username1}","password":"${password1}"}
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = '${username1}';
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - 参数替换后：
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - Params: {"username":"test","password":"123456"}
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
-[2025-03-30 19:31:03] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
-[2025-03-30 19:31:04] INFO  [AutoLogger:25] - 数据库驱动加载成功！
-[2025-03-30 19:31:04] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:04] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:04] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:04] INFO  [AutoLogger:21] - 发起请求：
-[2025-03-30 19:31:04] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:04] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"username":"test","password":"123456"}
-[2025-03-30 19:31:05] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":200,"message":"操作成功","data":{"tokenHead":"Bearer","tokenHeader":"Authorization","token":"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzMzNDI2NTczNCwiZXhwIjoxNzQzNDIwNjY1fQ.PRnZrhyMp0CY3MApl1Y72OVM7ja4IKYGWmBRLkyuOthfWfBfsTQ4VVYGjRRk4mANdT9B_lhG3veAcPYOHXwCuw"}}
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 已提取变量：${token} = eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzMzNDI2NTczNCwiZXhwIjoxNzQzNDIwNjY1fQ.PRnZrhyMp0CY3MApl1Y72OVM7ja4IKYGWmBRLkyuOthfWfBfsTQ4VVYGjRRk4mANdT9B_lhG3veAcPYOHXwCuw
-[2025-03-30 19:31:05] INFO  [AutoLogger:54] - ✅ 响应断言结果：
-[2025-03-30 19:31:05] INFO  [AutoLogger:55] - 【期望JSON】{"code": 200,"message": "操作成功"}
-[2025-03-30 19:31:05] INFO  [AutoLogger:56] - 【实际响应 】{"code":200,"message":"操作成功","data":{"tokenHead":"Bearer","tokenHeader":"Authorization","token":"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzMzNDI2NTczNCwiZXhwIjoxNzQzNDIwNjY1fQ.PRnZrhyMp0CY3MApl1Y72OVM7ja4IKYGWmBRLkyuOthfWfBfsTQ4VVYGjRRk4mANdT9B_lhG3veAcPYOHXwCuw"}}
-[2025-03-30 19:31:05] INFO  [AutoLogger:59] - 🎉 响应断言通过！
-[2025-03-30 19:31:05] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:05] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:05] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 【执行语句】SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 【请求前】305，【请求后】306
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 【预期差值】1，【实际差值】1 ✅
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 🎉 sql断言通过！
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - ========================================================
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 📌模块：登录功能
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 📌用例ID：1
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 📌描述：登录成功
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 🧪【接口模块】：登录功能
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 🔢【用例编号】：2
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 📝【用例描述】：登录不成功：账号不正确
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 🌐【接口地址】：http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - --------------------------------------------------------
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 参数替换前：
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - Params: {"username":"${username2}","password":"${password2}"}
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:用户不存在"}
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = '${username2}';
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - 参数替换后：
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - Params: {"username":"testA","password":"123456"}
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:用户不存在"}
-[2025-03-30 19:31:05] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'testA';
-[2025-03-30 19:31:05] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:05] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 发起请求：
-[2025-03-30 19:31:06] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:06] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"username":"testA","password":"123456"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":500,"message":"登录异常:用户不存在","data":null}
-[2025-03-30 19:31:06] WARN  [AutoLogger:151] - 未提取到值，jsonPath=$.data.token
-[2025-03-30 19:31:06] INFO  [AutoLogger:54] - ✅ 响应断言结果：
-[2025-03-30 19:31:06] INFO  [AutoLogger:55] - 【期望JSON】{"code":500,"message":"登录异常:用户不存在"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:56] - 【实际响应 】{"code":500,"message":"登录异常:用户不存在","data":null}
-[2025-03-30 19:31:06] INFO  [AutoLogger:59] - 🎉 响应断言通过！
-[2025-03-30 19:31:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【执行语句】SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'testA';
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【请求前】0，【请求后】0
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【预期差值】0，【实际差值】0 ✅
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🎉 sql断言通过！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ========================================================
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌模块：登录功能
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌用例ID：2
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌描述：登录不成功：账号不正确
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🧪【接口模块】：登录功能
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🔢【用例编号】：3
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📝【用例描述】：登录不成功：密码不正确
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🌐【接口地址】：http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - --------------------------------------------------------
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 参数替换前：
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - Params: {"username":"${username3}","password":"${password3}"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:密码不正确"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = '${username3}';
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 参数替换后：
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - Params: {"username":"test","password":"1234567"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:密码不正确"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
-[2025-03-30 19:31:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 发起请求：
-[2025-03-30 19:31:06] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/login
-[2025-03-30 19:31:06] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"username":"test","password":"1234567"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":500,"message":"登录异常:密码不正确","data":null}
-[2025-03-30 19:31:06] WARN  [AutoLogger:151] - 未提取到值，jsonPath=$.data.token
-[2025-03-30 19:31:06] INFO  [AutoLogger:54] - ✅ 响应断言结果：
-[2025-03-30 19:31:06] INFO  [AutoLogger:55] - 【期望JSON】{"code":500,"message":"登录异常:密码不正确"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:56] - 【实际响应 】{"code":500,"message":"登录异常:密码不正确","data":null}
-[2025-03-30 19:31:06] INFO  [AutoLogger:59] - 🎉 响应断言通过！
-[2025-03-30 19:31:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【执行语句】SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【请求前】306，【请求后】306
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【预期差值】0，【实际差值】0 ✅
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🎉 sql断言通过！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ========================================================
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌模块：登录功能
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌用例ID：3
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌描述：登录不成功：密码不正确
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
-[2025-03-30 19:31:06] INFO  [AutoLogger:28] - 成功加载Excel文件: src/test/resources/case_mall.xlsx
-[2025-03-30 19:31:06] INFO  [AutoLogger:31] - 读取Excel数据成功，记录条数: 1
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🧪【接口模块】：注册功能
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🔢【用例编号】：1
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📝【用例描述】：注册成功
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🌐【接口地址】：${ip}/admin/register
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - --------------------------------------------------------
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 参数替换前：
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - URL: ${ip}/admin/register
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - Params: {"id":null,"username":"${username}","password":"${password}","nickName":"${nickName}","email":"${email}","note":"${note}","status":${status}}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - SQL: SELECT count(*) from ums_admin where username = "${username}";
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 参数替换后：
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/register
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - Params: {"id":null,"username":"test0330lvs","password":"123456","nickName":"UsersN8","email":"test0330K1i@outlook.com","note":"自动化测试注册","status":1}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - SQL: SELECT count(*) from ums_admin where username = "test0330lvs";
-[2025-03-30 19:31:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 发起请求：
-[2025-03-30 19:31:06] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/register
-[2025-03-30 19:31:06] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"id":null,"username":"test0330lvs","password":"123456","nickName":"UsersN8","email":"test0330K1i@outlook.com","note":"自动化测试注册","status":1}
-[2025-03-30 19:31:06] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":200,"message":"操作成功","data":{"id":111,"username":"test0330lvs","password":"$2a$10$hN7nlLnrKA9vPOtX7tagM.aaskjVAmWtrgb336F/en8xK/lL1.GZi","icon":null,"email":"test0330K1i@outlook.com","nickName":"UsersN8","note":"自动化测试注册","createTime":"2025-03-30T11:31:06.634+00:00","loginTime":null,"status":1}}
-[2025-03-30 19:31:06] INFO  [AutoLogger:54] - ✅ 响应断言结果：
-[2025-03-30 19:31:06] INFO  [AutoLogger:55] - 【期望JSON】{"code": 200,"message": "操作成功"}
-[2025-03-30 19:31:06] INFO  [AutoLogger:56] - 【实际响应 】{"code":200,"message":"操作成功","data":{"id":111,"username":"test0330lvs","password":"$2a$10$hN7nlLnrKA9vPOtX7tagM.aaskjVAmWtrgb336F/en8xK/lL1.GZi","icon":null,"email":"test0330K1i@outlook.com","nickName":"UsersN8","note":"自动化测试注册","createTime":"2025-03-30T11:31:06.634+00:00","loginTime":null,"status":1}}
-[2025-03-30 19:31:06] INFO  [AutoLogger:59] - 🎉 响应断言通过！
-[2025-03-30 19:31:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
-[2025-03-30 19:31:06] INFO  [AutoLogger:48] - 数据库连接成功！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【执行语句】SELECT count(*) from ums_admin where username = "test0330lvs";
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【请求前】0，【请求后】1
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 【预期差值】1，【实际差值】1 ✅
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 🎉 sql断言通过！
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ========================================================
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌模块：注册功能
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌用例ID：1
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 📌描述：注册成功
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - ====================【测试结束】====================
-[2025-03-30 19:31:06] INFO  [AutoLogger:54] - 准备批量写入 Excel，文件路径：src/test/resources/case_mall.xlsx
-[2025-03-30 19:31:06] INFO  [AutoLogger:85] - ✅ 所有用例执行完毕，批量回写 Excel 成功，共写入 8 条数据。
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 所有测试数据已成功写回 Excel。
-[2025-03-30 19:31:06] INFO  [AutoLogger:21] - 本次测试总耗时：3.55 秒
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 📢 ==================【自动化测试开始】==================
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 📂 Excel路径: src/test/resources/case_mall.xlsx
+[2025-03-30 19:35:04] INFO  [AutoLogger:28] - 成功加载Excel文件: src/test/resources/case_mall.xlsx
+[2025-03-30 19:35:04] INFO  [AutoLogger:31] - 读取Excel数据成功，记录条数: 3
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 🧪【接口模块】：登录功能
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 🔢【用例编号】：1
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 📝【用例描述】：登录成功
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 🌐【接口地址】：${ip}/admin/login
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - --------------------------------------------------------
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 参数替换前：
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - URL: ${ip}/admin/login
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - Params: {"username":"${username1}","password":"${password1}"}
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = '${username1}';
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - 参数替换后：
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - Params: {"username":"test","password":"123456"}
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
+[2025-03-30 19:35:04] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
+[2025-03-30 19:35:04] INFO  [AutoLogger:25] - 数据库驱动加载成功！
+[2025-03-30 19:35:04] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:04] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:05] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:05] INFO  [AutoLogger:21] - 发起请求：
+[2025-03-30 19:35:05] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:05] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"username":"test","password":"123456"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":200,"message":"操作成功","data":{"tokenHead":"Bearer","tokenHeader":"Authorization","token":"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzMzNDUwNjQ2NiwiZXhwIjoxNzQzNDIwOTA2fQ.xzgxQHKa1WTQmQdBsyq1-F0jp97ju816B2dYjm111EoN72oqIZgnzMc61J84Fj6gu2wSslJcqOmk4n6uJpEx6Q"}}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 已提取变量：${token} = eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzMzNDUwNjQ2NiwiZXhwIjoxNzQzNDIwOTA2fQ.xzgxQHKa1WTQmQdBsyq1-F0jp97ju816B2dYjm111EoN72oqIZgnzMc61J84Fj6gu2wSslJcqOmk4n6uJpEx6Q
+[2025-03-30 19:35:06] INFO  [AutoLogger:54] - ✅ 响应断言结果：
+[2025-03-30 19:35:06] INFO  [AutoLogger:55] - 【期望JSON】{"code": 200,"message": "操作成功"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:56] - 【实际响应 】{"code":200,"message":"操作成功","data":{"tokenHead":"Bearer","tokenHeader":"Authorization","token":"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0IiwiY3JlYXRlZCI6MTc0MzMzNDUwNjQ2NiwiZXhwIjoxNzQzNDIwOTA2fQ.xzgxQHKa1WTQmQdBsyq1-F0jp97ju816B2dYjm111EoN72oqIZgnzMc61J84Fj6gu2wSslJcqOmk4n6uJpEx6Q"}}
+[2025-03-30 19:35:06] INFO  [AutoLogger:59] - 🎉 响应断言通过！
+[2025-03-30 19:35:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 【执行语句】SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 【请求前】307，【请求后】308
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 【预期差值】1，【实际差值】1 ✅
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🎉 sql断言通过！
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ========================================================
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📌模块：登录功能
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📌用例ID：1
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📌描述：登录成功
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🧪【接口模块】：登录功能
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🔢【用例编号】：2
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📝【用例描述】：登录不成功：账号不正确
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🌐【接口地址】：http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - --------------------------------------------------------
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 参数替换前：
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - Params: {"username":"${username2}","password":"${password2}"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:用户不存在"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = '${username2}';
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 参数替换后：
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - Params: {"username":"testA","password":"123456"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:用户不存在"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'testA';
+[2025-03-30 19:35:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 发起请求：
+[2025-03-30 19:35:06] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"username":"testA","password":"123456"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":500,"message":"登录异常:用户不存在","data":null}
+[2025-03-30 19:35:06] WARN  [AutoLogger:151] - 未提取到值，jsonPath=$.data.token
+[2025-03-30 19:35:06] INFO  [AutoLogger:54] - ✅ 响应断言结果：
+[2025-03-30 19:35:06] INFO  [AutoLogger:55] - 【期望JSON】{"code":500,"message":"登录异常:用户不存在"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:56] - 【实际响应 】{"code":500,"message":"登录异常:用户不存在","data":null}
+[2025-03-30 19:35:06] INFO  [AutoLogger:59] - 🎉 响应断言通过！
+[2025-03-30 19:35:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 【执行语句】SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'testA';
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 【请求前】0，【请求后】0
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 【预期差值】0，【实际差值】0 ✅
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🎉 sql断言通过！
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ========================================================
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📌模块：登录功能
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📌用例ID：2
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📌描述：登录不成功：账号不正确
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🧪【接口模块】：登录功能
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🔢【用例编号】：3
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 📝【用例描述】：登录不成功：密码不正确
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 🌐【接口地址】：http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - --------------------------------------------------------
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 参数替换前：
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - Params: {"username":"${username3}","password":"${password3}"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:密码不正确"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = '${username3}';
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 参数替换后：
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - Params: {"username":"test","password":"1234567"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - ExpectedResult: {"code":500,"message":"登录异常:密码不正确"}
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - SQL: SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
+[2025-03-30 19:35:06] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:06] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:06] INFO  [AutoLogger:21] - 发起请求：
+[2025-03-30 19:35:06] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/login
+[2025-03-30 19:35:06] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"username":"test","password":"1234567"}
+[2025-03-30 19:35:07] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":500,"message":"登录异常:密码不正确","data":null}
+[2025-03-30 19:35:07] WARN  [AutoLogger:151] - 未提取到值，jsonPath=$.data.token
+[2025-03-30 19:35:07] INFO  [AutoLogger:54] - ✅ 响应断言结果：
+[2025-03-30 19:35:07] INFO  [AutoLogger:55] - 【期望JSON】{"code":500,"message":"登录异常:密码不正确"}
+[2025-03-30 19:35:07] INFO  [AutoLogger:56] - 【实际响应 】{"code":500,"message":"登录异常:密码不正确","data":null}
+[2025-03-30 19:35:07] INFO  [AutoLogger:59] - 🎉 响应断言通过！
+[2025-03-30 19:35:07] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:07] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:07] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 【执行语句】SELECT COUNT(*) FROM ums_admin_login_log lJOIN ums_admin a ON l.admin_id = a.idWHERE a.username = 'test';
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 【请求前】308，【请求后】308
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 【预期差值】0，【实际差值】0 ✅
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 🎉 sql断言通过！
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - ========================================================
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 📌模块：登录功能
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 📌用例ID：3
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 📌描述：登录不成功：密码不正确
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
+[2025-03-30 19:35:07] INFO  [AutoLogger:28] - 成功加载Excel文件: src/test/resources/case_mall.xlsx
+[2025-03-30 19:35:07] INFO  [AutoLogger:31] - 读取Excel数据成功，记录条数: 1
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 🧪【接口模块】：注册功能
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 🔢【用例编号】：1
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 📝【用例描述】：注册成功
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 🌐【接口地址】：${ip}/admin/register
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - --------------------------------------------------------
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 参数替换前：
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - URL: ${ip}/admin/register
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - Params: {"id":null,"username":"${username}","password":"${password}","nickName":"${nickName}","email":"${email}","note":"${note}","status":${status}}
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - SQL: SELECT count(*) from ums_admin where username = "${username}";
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 参数替换后：
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - URL: http://129.28.122.208:8089/admin/register
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - Params: {"id":null,"username":"test0330BrF","password":"123456","nickName":"DemoZLM","email":"test0330UzN@gmail.com","note":"自动化测试注册","status":1}
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - ExpectedResult: {"code": 200,"message": "操作成功"}
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - SQL: SELECT count(*) from ums_admin where username = "test0330BrF";
+[2025-03-30 19:35:07] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:07] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:07] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 发起请求：
+[2025-03-30 19:35:07] INFO  [AutoLogger:192] - 【POST 请求】URL: http://129.28.122.208:8089/admin/register
+[2025-03-30 19:35:07] INFO  [AutoLogger:193] -  ➡️ 请求参数: {"id":null,"username":"test0330BrF","password":"123456","nickName":"DemoZLM","email":"test0330UzN@gmail.com","note":"自动化测试注册","status":1}
+[2025-03-30 19:35:07] INFO  [AutoLogger:197] -  ⬅️ 响应结果: {"code":200,"message":"操作成功","data":{"id":113,"username":"test0330BrF","password":"$2a$10$7FVgnYCSvqMwa2vQN51ll.oaYQStpw6NsSeVBcX7TM9Upl.upk/VG","icon":null,"email":"test0330UzN@gmail.com","nickName":"DemoZLM","note":"自动化测试注册","createTime":"2025-03-30T11:35:07.334+00:00","loginTime":null,"status":1}}
+[2025-03-30 19:35:07] INFO  [AutoLogger:54] - ✅ 响应断言结果：
+[2025-03-30 19:35:07] INFO  [AutoLogger:55] - 【期望JSON】{"code": 200,"message": "操作成功"}
+[2025-03-30 19:35:07] INFO  [AutoLogger:56] - 【实际响应 】{"code":200,"message":"操作成功","data":{"id":113,"username":"test0330BrF","password":"$2a$10$7FVgnYCSvqMwa2vQN51ll.oaYQStpw6NsSeVBcX7TM9Upl.upk/VG","icon":null,"email":"test0330UzN@gmail.com","nickName":"DemoZLM","note":"自动化测试注册","createTime":"2025-03-30T11:35:07.334+00:00","loginTime":null,"status":1}}
+[2025-03-30 19:35:07] INFO  [AutoLogger:59] - 🎉 响应断言通过！
+[2025-03-30 19:35:07] INFO  [AutoLogger:23] - 开始加载配置文件：/database.properties
+[2025-03-30 19:35:07] INFO  [AutoLogger:33] - 成功读取配置文件：/database.properties
+[2025-03-30 19:35:07] INFO  [AutoLogger:48] - 数据库连接成功！
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 🧾 SQL断言结果：
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 【执行语句】SELECT count(*) from ums_admin where username = "test0330BrF";
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 【请求前】0，【请求后】1
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 【预期差值】1，【实际差值】1 ✅
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 🎉 sql断言通过！
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - ========================================================
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 📌模块：注册功能
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 📌用例ID：1
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 📌描述：注册成功
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - ✅【用例执行完毕】========================================================
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - ====================【测试结束】====================
+[2025-03-30 19:35:07] INFO  [AutoLogger:54] - 准备批量写入 Excel，文件路径：src/test/resources/case_mall.xlsx
+[2025-03-30 19:35:07] INFO  [AutoLogger:85] - ✅ 所有用例执行完毕，批量回写 Excel 成功，共写入 8 条数据。
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 所有测试数据已成功写回 Excel。
+[2025-03-30 19:35:07] INFO  [AutoLogger:21] - 本次测试总耗时：3.35 秒
