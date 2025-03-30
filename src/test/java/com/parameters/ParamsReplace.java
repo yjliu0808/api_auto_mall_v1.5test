@@ -29,12 +29,6 @@ public class ParamsReplace extends BaseLogger {
         // 获取替换数据源（一次性）
         Map<String, String> replacementMap = GlobalSaveData.getAll();
 
-        // 打印替换前的内容
-        logger.info("参数替换前：" +
-                "\nURL: " + url +
-                "\nParams: " + params +
-                "\nExpectedResult: " + expectedResult +
-                "\nSQL: " + sql);
 
         // 遍历所有需要替换的占位符
         for (Map.Entry<String, String> entry : replacementMap.entrySet()) {
@@ -53,12 +47,7 @@ public class ParamsReplace extends BaseLogger {
         caseInfo.setExpectedResult(expectedResult);
         caseInfo.setSql(sql);
 
-        // 打印替换后的内容
-        logger.info("参数替换后：" +
-                "\nURL: " + url +
-                "\nParams: " + params +
-                "\nExpectedResult: " + expectedResult +
-                "\nSQL: " + sql);
+
     }
 
     /**

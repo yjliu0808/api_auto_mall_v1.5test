@@ -6,7 +6,6 @@ import com.entity.CaseInfo;
 import com.loggerutil.BaseLogger;
 
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @Author： Athena
@@ -25,10 +24,6 @@ public class AssertResponseResult extends BaseLogger {
     public static boolean assertResponseResult(CaseInfo caseInfo, String responseResult) {
         boolean assertResult = true;
         String expectedResultJson = caseInfo.getExpectedResult();
-
-        logger.info("【断言开始】用例ID: " + caseInfo.getCaseId());
-        logger.info("【期望JSON】" + expectedResultJson);
-        logger.info("【实际响应】" + responseResult);
 
         if (expectedResultJson == null || expectedResultJson.trim().isEmpty()) {
             logger.warn("⚠️ 跳过断言：未设置期望结果");
@@ -53,14 +48,17 @@ public class AssertResponseResult extends BaseLogger {
                         "，期望值：" + expectedValue +
                         "，实际值：" + actualValue);
                 assertResult = false;
-            } else {
-                logger.info("✅ 断言通过 - 字段：" + expectedKey +
-                        "，值：" + actualValue);
             }
         }
 
+        logger.info("✅ 响应断言结果：");
+        logger.info("【期望JSON】" + expectedResultJson);
+        logger.info("【实际响应 】" + responseResult);
+
         if (assertResult) {
-            logger.info("🎉 所有字段断言通过！");
+            logger.info("🎉 响应断言通过！");
+        } else {
+            logger.info("❌ 响应断言失败！");
         }
 
         return assertResult;

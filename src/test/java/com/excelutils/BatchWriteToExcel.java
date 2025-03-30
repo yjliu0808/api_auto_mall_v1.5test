@@ -82,7 +82,7 @@ public class BatchWriteToExcel extends BaseLogger {
             }
 
             if (showLog) {
-                logger.info("✅ 所有用例执行完毕，批量回写 Excel 成功，共写入 " + writeSize + " 条数据。\n");
+                logger.info("✅ 所有用例执行完毕，批量回写 Excel 成功，共写入 " + writeSize + " 条数据。");
             }
 
         } catch (IOException e) {

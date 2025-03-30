@@ -33,30 +33,30 @@ public class HttpRequest extends BaseLogger {
         try {
             switch (type.toLowerCase()) {
                 case "get":
-                    logger.info("【GET 请求】URL: " + url);
+                   // logger.info("【GET 请求】URL: " + url);
                     responseBody = requestSpec.get(url).asString();
                     break;
                 case "post":
-                    logger.info("【POST 请求】URL: " + url + "，Params: " + params);
+                   // logger.info("【POST 请求】URL: " + url + "，Params: " + params);
                     responseBody = requestSpec.body(params).post(url).asString();
                     break;
                 case "patch":
-                    logger.info("【PATCH 请求】URL: " + url + "，Params: " + params);
+                   // logger.info("【PATCH 请求】URL: " + url + "，Params: " + params);
                     responseBody = requestSpec.body(params).patch(url).asString();
                     break;
                 case "put":
-                    logger.info("【PUT 请求】URL: " + url + "，Params: " + params);
+                   // logger.info("【PUT 请求】URL: " + url + "，Params: " + params);
                     responseBody = requestSpec.body(params).put(url).asString();
                     break;
                 case "delete":
-                    logger.info("【DELETE 请求】URL: " + url + "，Params: " + params);
+                   // logger.info("【DELETE 请求】URL: " + url + "，Params: " + params);
                     responseBody = requestSpec.body(params).delete(url).asString();
                     break;
                 default:
                     throw new IllegalArgumentException("不支持的请求类型: " + type);
             }
 
-            logger.info("【响应结果】：\n" + responseBody);
+          //  logger.info("【响应结果】：\n" + responseBody);
             return responseBody;
 
         } catch (Exception e) {

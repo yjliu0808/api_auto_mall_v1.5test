@@ -40,8 +40,8 @@ public class BaseCase extends BaseLogger {
     @BeforeSuite
     public void setup() {
         suiteStartTime = System.currentTimeMillis();
-        logger.info("\n📢 ==================【自动化测试开始】==================");
-        logger.info("📂 Excel路径: " + ExcelConstants.excelCasePath);
+        logInfo("📢 ==================【自动化测试开始】==================");
+        logInfo("📂 Excel路径: " + ExcelConstants.excelCasePath);
         BaseParams.paramsSetValue();
     }
 
@@ -57,11 +57,11 @@ public class BaseCase extends BaseLogger {
         if (data != null && data.length > 0 && data[0] instanceof CaseInfo) {
             CaseInfo caseInfo = (CaseInfo) data[0];
             caseInfoThreadLocal.set(caseInfo);
-            logger.info("\n🧪【接口模块】：" + nullToEmpty(caseInfo.getInterfaceName()) +
-                    "\n🔢【用例编号】：" + caseInfo.getCaseId() +
-                    "\n📝【用例描述】：" + nullToEmpty(caseInfo.getCaseDesc()) +
-                    "\n🌐【接口地址】：" + nullToEmpty(caseInfo.getUrl()) +
-                    "\n--------------------------------------------------------");
+            logInfo("🧪【接口模块】：" + nullToEmpty(caseInfo.getInterfaceName()));
+            logInfo("🔢【用例编号】：" + caseInfo.getCaseId());
+            logInfo("📝【用例描述】：" + nullToEmpty(caseInfo.getCaseDesc()));
+            logInfo("🌐【接口地址】：" + nullToEmpty(caseInfo.getUrl()));
+            logInfo("--------------------------------------------------------");
         }
     }
 
@@ -69,10 +69,13 @@ public class BaseCase extends BaseLogger {
     public void afterMethod() {
         CaseInfo caseInfo = caseInfoThreadLocal.get();
         if (caseInfo != null) {
-            logger.info("\n✅【用例执行完毕】\n📌 模块：" + nullToEmpty(caseInfo.getInterfaceName()) +
-                    " ｜ 用例ID：" + caseInfo.getCaseId() +
-                    " ｜ 描述：" + nullToEmpty(caseInfo.getCaseDesc()) +
-                    "\n========================================================");
+            logInfo("========================================================");
+            logInfo("📌模块：" + nullToEmpty(caseInfo.getInterfaceName()));
+            logInfo( "📌用例ID：" + caseInfo.getCaseId());
+            logInfo( "📌描述：" + nullToEmpty(caseInfo.getCaseDesc()));
+            logInfo("✅【用例执行完毕】========================================================");
+
+
         }
         caseInfoThreadLocal.remove();
         headersThreadLocal.remove();
@@ -86,29 +89,51 @@ public class BaseCase extends BaseLogger {
     @AfterSuite
     public void tearDown() {
         long duration = System.currentTimeMillis() - suiteStartTime;
-        logger.info("\n====================【测试结束】====================");
+        logInfo("====================【测试结束】====================");
         BatchWriteToExcel.batchWriteToExcel(ExcelConstants.excelCasePath, true);
-        logger.info("所有测试数据已成功写回 Excel。\n");
-        logger.info(String.format("本次测试总耗时：%.2f 秒", duration / 1000.0));
+        logInfo("所有测试数据已成功写回 Excel。");
+        logInfo(String.format("本次测试总耗时：%.2f 秒", duration / 1000.0));
     }
 
     protected void executeTestCase(CaseInfo caseInfo, Runnable paramInitLogic) {
         caseInfoThreadLocal.set(caseInfo);
         paramInitLogic.run();
-        ParamsReplace.paramsReplace(caseInfo);
+
+        // 记录替换前副本
+        String originalUrl = singleLine(caseInfo.getUrl());
+        String originalParams = singleLine(caseInfo.getParams());
+        String originalExpected = singleLine(caseInfo.getExpectedResult());
+        String originalSql = singleLine(caseInfo.getSql());
+
+        logInfo("参数替换前：" );
+        logInfo("URL: " + originalUrl );
+        logInfo("Params: " + originalParams);
+        logInfo("ExpectedResult: " + originalExpected);
+        logInfo("SQL: " + originalSql);
+
+        ParamsReplace.paramsReplace(caseInfo); // 执行替换
+        logInfo("参数替换后：");
+        logInfo("URL: " + singleLine(caseInfo.getUrl()));
+        logInfo("Params: " + singleLine(caseInfo.getParams()));
+        logInfo("ExpectedResult: " + singleLine(caseInfo.getExpectedResult()));
+        logInfo( "SQL: " + singleLine(caseInfo.getSql()));
+
+
+
         headersThreadLocal.set(GetHeaders.getLoginHeaders());
         sqlBeforeThreadLocal.set(SqlUtils.querySingleValue(caseInfo.getSql()));
         logCaseInfo();
         String response = sendRequest();
         extractResponseVars(response);
-        finishWriteBackAndAssert(caseInfo, response);
+        finishWriteBackAndAssert(response);
     }
+
 
     protected void extractResponseVars(String response) {}
 
     public static void saveResponseResult(String response, String extractConfig) {
         if (extractConfig == null || extractConfig.trim().isEmpty()) {
-            logger.info("未配置提取表达式，跳过提取变量");
+            logInfo("未配置提取表达式，跳过提取变量");
             return;
         }
         String[] extracts = extractConfig.split(";");
@@ -121,7 +146,7 @@ public class BaseCase extends BaseLogger {
                 Object value = JSONPath.read(response, jsonPath);
                 if (value != null) {
                     GlobalSaveData.put(saveKey, value.toString());
-                    logger.info("已提取变量：" + saveKey + " = " + value);
+                    logInfo("已提取变量：" + saveKey + " = " + value);
                 } else {
                     logger.warn("未提取到值，jsonPath=" + jsonPath);
                 }
@@ -130,6 +155,8 @@ public class BaseCase extends BaseLogger {
             }
         }
     }
+
+
 
     @Step("【用例信息】")
     protected void logCaseInfo() {
@@ -151,22 +178,46 @@ public class BaseCase extends BaseLogger {
                 caseInfo.getExpectedSqlDiff() == null ? "未设置" : caseInfo.getExpectedSqlDiff()
         );
     }
-
     @Step("【发起请求】")
     protected String sendRequest() {
         CaseInfo caseInfo = caseInfoThreadLocal.get();
         Map<String, String> headers = headersThreadLocal.get();
-        attachRequestDetail(caseInfo.getUrl(), caseInfo.getType(), headers, caseInfo.getParams());
-        logger.info("➡️ 请求参数: " + caseInfo.getParams());
-        String response = HttpRequest.httpRequest(headers, caseInfo.getUrl(), caseInfo.getParams(), caseInfo.getType());
-        logger.info("⬅️ 响应结果: " + response);
+
+        String method = nullToEmpty(caseInfo.getType()).toUpperCase();
+        String url = singleLine(caseInfo.getUrl());  // 去掉回车和多空格
+        String params = singleLine(caseInfo.getParams());
+
+        // 🧼 日志整洁输出
+        logInfo("发起请求：");
+        logger.info("【" + method + " 请求】URL: " + url);
+        logger.info(" ➡️ 请求参数: " + params);
+
+        String response = HttpRequest.httpRequest(headers, url, params, method);
+
+        logger.info(" ⬅️ 响应结果: " + response);
+        attachRequestDetail(url, method, headers, params);
+
         return response;
     }
+
+
+
 
     @Attachment(value = "请求信息", type = "text/plain")
     protected String attachRequestDetail(String url, String type, Map<String, String> headers, String params) {
         return String.format("请求地址：%s\n请求方式：%s\n请求头：%s\n请求参数：%s",
                 url, nullToEmpty(type).toUpperCase(), headers != null ? headers.toString() : "{}", nullToEmpty(params));
+    }
+
+    protected void finishWriteBackAndAssert(String response) {
+        CaseInfo caseInfo = caseInfoThreadLocal.get();
+        responseThreadLocal.set(response);
+        BatchWriteToExcel.addWriteBackData(caseInfo.getCaseId(), ExcelConstants.RESPONSE_RESULT_COLUMN_INDEX, startSheetIndex, response);
+        assertResponseResult();
+        Object sqlAfter = SqlUtils.querySingleValue(caseInfo.getSql());
+        sqlAfterThreadLocal.set(sqlAfter);
+        assertSqlResult();
+        logFinalResult();
     }
 
     @Step("【响应断言】")
@@ -176,10 +227,10 @@ public class BaseCase extends BaseLogger {
         boolean result = AssertResponseResult.assertResponseResult(caseInfo, response);
         assertResponseResultThreadLocal.set(result);
         attachResponseAssertion(caseInfo.getExpectedResult(), response, result);
-        logger.info("\n✅ 响应断言结果：\n【期望JSON】" + caseInfo.getExpectedResult() +
-                "\n【实际响应】" + response +
-                "\n" + (result ? "🎉 响应断言通过！" : "❌ 响应断言失败！"));
+
+
     }
+
 
     @Attachment(value = "响应断言信息", type = "text/plain")
     protected String attachResponseAssertion(String expected, String actual, boolean result) {
@@ -191,7 +242,7 @@ public class BaseCase extends BaseLogger {
     protected void assertSqlResult() {
         CaseInfo caseInfo = caseInfoThreadLocal.get();
         if (caseInfo.getExpectedSqlDiff() == null) {
-            logger.info("未配置预期 SQL 差值，跳过数据库断言");
+            logInfo("未配置预期 SQL 差值，跳过数据库断言");
             assertSqlResultThreadLocal.set(true);
             attachSqlAssertion("未配置 SQL 差值", null, null, 0, 0, true);
             return;
@@ -211,15 +262,25 @@ public class BaseCase extends BaseLogger {
             attachSqlAssertion(sql, before, after, 0, 0, true);
             return;
         }
+
         int expectedDiff = caseInfo.getExpectedSqlDiff();
         int actualDiff = (int) ((Long) after - (Long) before);
         boolean result = actualDiff == expectedDiff;
         assertSqlResultThreadLocal.set(result);
         attachSqlAssertion(sql, before, after, expectedDiff, actualDiff, result);
-        logger.info("\n🧾 SQL断言：\n- 执行语句：" + sql +
-                "\n- 请求前：" + before + "，请求后：" + after +
-                "\n- 差值预期：" + expectedDiff + "，实际：" + actualDiff + " " + (result ? "✅" : "❌"));
+
+        // ✅ 格式统一日志输出
+        logInfo("🧾 SQL断言结果：");
+        logInfo("【执行语句】" + singleLine(sql));
+        logInfo("【请求前】" + before + "，【请求后】" + after);
+        logInfo("【预期差值】" + expectedDiff + "，【实际差值】" + actualDiff + (result ? " ✅" : " ❌"));
+
+        if (result) {
+            logInfo("🎉 sql断言通过！");
+        }
+
     }
+
 
     @Attachment(value = "数据库断言信息", type = "text/plain")
     protected String attachSqlAssertion(String sql, Object before, Object after, int expected, int actual, boolean result) {
@@ -244,18 +305,12 @@ public class BaseCase extends BaseLogger {
         return String.format("用例编号：%d\n响应断言：%s\n数据库断言：%s\n最终结果：%s",
                 caseId, response ? "✅ 通过" : "❌ 失败", sql ? "✅ 通过" : "❌ 失败", result);
     }
-
-    protected void finishWriteBackAndAssert(CaseInfo caseInfo, String response) {
-        responseThreadLocal.set(response);
-        BatchWriteToExcel.addWriteBackData(caseInfo.getCaseId(), ExcelConstants.RESPONSE_RESULT_COLUMN_INDEX, startSheetIndex, response);
-        assertResponseResult();
-        Object sqlAfter = SqlUtils.querySingleValue(caseInfo.getSql());
-        sqlAfterThreadLocal.set(sqlAfter);
-        assertSqlResult();
-        logFinalResult();
+    private String singleLine(String text) {
+        return nullToEmpty(text).replaceAll("[\n\r]", "").replaceAll("\\s{2,}", " ").trim();
     }
 
     protected String nullToEmpty(String str) {
-        return str == null ? "" : str;
+        return str == null ? "" : str.trim().replaceAll("[\n\r]", "");
     }
+
 }
