@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('Test GitHub Connection') {
             steps {
-                echo 'Hello Jenkins! 构建成功！'
+                sh 'curl -I https://github.com'
             }
         }
     }
