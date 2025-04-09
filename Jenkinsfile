@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('🧪 Test GitHub Connection') {
             steps {
-                echo '🔍 正在测试 Jenkins 是否能访问 GitHub...'
+                echo '🔍 A------正在测试 Jenkins 是否能访问 GitHub...'
                 sh 'curl -I https://github.com'
                 echo '✅ GitHub 连接测试完成'
             }
