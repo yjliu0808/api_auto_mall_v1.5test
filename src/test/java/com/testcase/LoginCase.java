@@ -1,10 +1,6 @@
 package com.testcase;
-
-import com.databaseutils.SqlUtils;
 import com.entity.CaseInfo;
 import com.excelutils.ReadExcel;
-import com.globaldata.GlobalSaveData;
-import com.httprequest.GetHeaders;
 import com.parameters.LoginParams;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;

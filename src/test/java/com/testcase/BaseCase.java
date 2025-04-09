@@ -148,10 +148,10 @@ public class BaseCase extends BaseLogger {
                     GlobalSaveData.put(saveKey, value.toString());
                     logInfo("已提取变量：" + saveKey + " = " + value);
                 } else {
-                    logger.warn("未提取到值，jsonPath=" + jsonPath);
+                    logWarn("未提取到值，jsonPath=" + jsonPath);
                 }
             } catch (Exception e) {
-                logger.error("提取变量异常，jsonPath=" + jsonPath + "，配置=" + extract, e);
+                logError("提取变量异常，jsonPath=" + jsonPath + "，配置=" + extract, e);
             }
         }
     }
@@ -189,12 +189,12 @@ public class BaseCase extends BaseLogger {
 
         // 🧼 日志整洁输出
         logInfo("发起请求：");
-        logger.info("【" + method + " 请求】URL: " + url);
-        logger.info(" ➡️ 请求参数: " + params);
+        logInfo("【" + method + " 请求】URL: " + url);
+        logInfo(" ➡️ 请求参数: " + params);
 
         String response = HttpRequest.httpRequest(headers, url, params, method);
 
-        logger.info(" ⬅️ 响应结果: " + response);
+        logInfo(" ⬅️ 响应结果: " + response);
         attachRequestDetail(url, method, headers, params);
 
         return response;
@@ -249,7 +249,7 @@ public class BaseCase extends BaseLogger {
         }
         String sql = caseInfo.getSql();
         if (sql == null || sql.trim().isEmpty()) {
-            logger.warn("SQL 为空，跳过数据库断言");
+            logWarn("SQL 为空，跳过数据库断言");
             assertSqlResultThreadLocal.set(true);
             attachSqlAssertion("SQL 为空", null, null, 0, 0, true);
             return;
@@ -257,7 +257,7 @@ public class BaseCase extends BaseLogger {
         Object before = sqlBeforeThreadLocal.get();
         Object after = sqlAfterThreadLocal.get();
         if (before == null || after == null) {
-            logger.warn("SQL 断言跳过，查询结果为空（before=" + before + ", after=" + after + ")");
+            logWarn("SQL 断言跳过，查询结果为空（before=" + before + ", after=" + after + ")");
             assertSqlResultThreadLocal.set(true);
             attachSqlAssertion(sql, before, after, 0, 0, true);
             return;

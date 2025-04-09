@@ -26,7 +26,7 @@ public class AssertResponseResult extends BaseLogger {
         String expectedResultJson = caseInfo.getExpectedResult();
 
         if (expectedResultJson == null || expectedResultJson.trim().isEmpty()) {
-            logger.warn("⚠️ 跳过断言：未设置期望结果");
+            logWarn("⚠️ 跳过断言：未设置期望结果");
             return true;
         }
 
@@ -40,25 +40,25 @@ public class AssertResponseResult extends BaseLogger {
             try {
                 actualValue = JSONPath.read(responseResult, "$." + expectedKey);
             } catch (Exception e) {
-                logger.warn("⚠️ JSONPath 提取失败：字段 $" + expectedKey + " 不存在或格式错误！");
+                logWarn("⚠️ JSONPath 提取失败：字段 $" + expectedKey + " 不存在或格式错误！");
             }
 
             if (!String.valueOf(expectedValue).equals(String.valueOf(actualValue))) {
-                logger.info("❌ 断言失败 - 字段：" + expectedKey +
+                logInfo("❌ 断言失败 - 字段：" + expectedKey +
                         "，期望值：" + expectedValue +
                         "，实际值：" + actualValue);
                 assertResult = false;
             }
         }
 
-        logger.info("✅ 响应断言结果：");
-        logger.info("【期望JSON】" + expectedResultJson);
-        logger.info("【实际响应 】" + responseResult);
+        logInfo("✅ 响应断言结果：");
+        logInfo("【期望JSON】" + expectedResultJson);
+        logInfo("【实际响应 】" + responseResult);
 
         if (assertResult) {
-            logger.info("🎉 响应断言通过！");
+            logInfo("🎉 响应断言通过！");
         } else {
-            logger.info("❌ 响应断言失败！");
+            logInfo("❌ 响应断言失败！");
         }
 
         return assertResult;

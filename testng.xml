@@ -10,6 +10,14 @@
                 <parameter name="startSheetIndex" value="1"/>
                 <parameter name="sheetNum" value="1"/>
             </class>
+            <class name="com.testcase.AddRoleCase">
+                <parameter name="startSheetIndex" value="2"/>
+                <parameter name="sheetNum" value="1"/>
+            </class>
+            <class name="com.testcase.AddMenuCase">
+                <parameter name="startSheetIndex" value="3"/>
+                <parameter name="sheetNum" value="1"/>
+            </class>
         </classes>
     </test>
 

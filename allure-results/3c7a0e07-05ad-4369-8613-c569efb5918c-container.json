@@ -1,0 +1,1 @@
+{"uuid":"3c7a0e07-05ad-4369-8613-c569efb5918c","name":"com.testcase.AddRoleCase","children":["5ddebbf2-b196-45ab-bcf4-8d1be04c6401"],"befores":[{"name":"beforeClass","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1744102968120,"stop":1744102968120}],"afters":[],"start":1744102963215,"stop":1744102968576}

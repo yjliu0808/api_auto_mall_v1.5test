@@ -22,9 +22,9 @@ public class DatabaseConnection extends BaseLogger {
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            logger.info("数据库驱动加载成功！");
+            logInfo("数据库驱动加载成功！");
         } catch (ClassNotFoundException e) {
-            logger.error("数据库驱动加载失败！", e);
+            logError("数据库驱动加载失败！", e);
             throw new RuntimeException("数据库驱动加载失败！", e);
         }
     }
@@ -45,9 +45,9 @@ public class DatabaseConnection extends BaseLogger {
                         String password = properties.getProperty("db.password");
 
                         connection = DriverManager.getConnection(url, username, password);
-                        logger.info("数据库连接成功！");
+                        logInfo("数据库连接成功！");
                     } catch (SQLException e) {
-                        logger.error("数据库连接失败！", e);
+                        logError("数据库连接失败！", e);
                         throw new RuntimeException("数据库连接失败！", e);
                     }
                 }
@@ -63,9 +63,9 @@ public class DatabaseConnection extends BaseLogger {
         if (connection != null) {
             try {
                 connection.close();
-                logger.info("数据库连接已关闭！");
+                logInfo("数据库连接已关闭！");
             } catch (SQLException e) {
-                logger.error("数据库连接关闭失败", e);
+                logError("数据库连接关闭失败", e);
             } finally {
                 connection = null;
             }
@@ -80,7 +80,7 @@ public class DatabaseConnection extends BaseLogger {
         try {
             return connection != null && !connection.isClosed();
         } catch (SQLException e) {
-            logger.warn("检查数据库连接状态失败", e);
+            logWarn("检查数据库连接状态失败", e);
             return false;
         }
     }

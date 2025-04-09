@@ -20,21 +20,21 @@ public class ReadProperties extends BaseLogger {
      * @return Properties 对象
      */
     public static Properties readProperties(String propertiesFileName) {
-        logger.info("开始加载配置文件：" + propertiesFileName);
+        logInfo("开始加载配置文件：" + propertiesFileName);
 
         try (InputStream inputStream = ReadProperties.class.getResourceAsStream(propertiesFileName)) {
             if (inputStream == null) {
-                logger.error("未找到配置文件：" + propertiesFileName);
+                logError("未找到配置文件：" + propertiesFileName);
                 throw new RuntimeException("未找到配置文件：" + propertiesFileName);
             }
 
             Properties properties = new Properties();
             properties.load(inputStream);
-            logger.info("成功读取配置文件：" + propertiesFileName);
+            logInfo("成功读取配置文件：" + propertiesFileName);
             return properties;
 
         } catch (IOException e) {
-            logger.error("读取配置文件失败：" + propertiesFileName, e);
+            logInfo("读取配置文件失败：" + propertiesFileName);
             throw new RuntimeException("读取配置文件失败：" + propertiesFileName, e);
         }
     }

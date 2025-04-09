@@ -60,7 +60,7 @@ public class HttpRequest extends BaseLogger {
             return responseBody;
 
         } catch (Exception e) {
-            logger.error("HTTP 请求发送失败: " + url, e);
+            logError("HTTP 请求发送失败: " + url, e);
             throw new RuntimeException("HTTP 请求发送失败", e);
         }
     }

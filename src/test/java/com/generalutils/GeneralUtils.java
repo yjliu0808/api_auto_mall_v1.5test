@@ -77,6 +77,13 @@ public class  GeneralUtils {
     }
 
 
+    private static final String[] MODULES = {"pms", "order", "sms", "ums"};
+    private static final Random random = new Random();
+
+    public static String getRandomModule() {
+        int index = random.nextInt(MODULES.length);
+        return MODULES[index]; // 一定是非空字符串
+    }
 
 
 }

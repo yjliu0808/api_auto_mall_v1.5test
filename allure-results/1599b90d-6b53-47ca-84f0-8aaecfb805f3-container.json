@@ -1,0 +1,1 @@
+{"uuid":"1599b90d-6b53-47ca-84f0-8aaecfb805f3","name":"com.testcase.AddMenuCase","children":["f54fbc33-d26a-4934-8250-5001c4fd3ede"],"befores":[{"name":"beforeClass","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1744103205852,"stop":1744103205852}],"afters":[],"start":1744103201469,"stop":1744103206072}
