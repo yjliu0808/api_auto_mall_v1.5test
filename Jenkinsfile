@@ -11,9 +11,7 @@ pipeline { //声明一个流水线（Pipeline）构建任务
                       //要生效必须 Jenkins 和 GitHub Webhook 配置正确。
     }
 
-    environment {
-        // 可以设置一些环境变量，如果你需要的话
-    }
+ 
 
     stages {
         stage('🧪 Checkout') {
