@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven3.8.6'  // Jenkins 全局工具管理中配置的 Maven 名称
-        jdk 'jdk1.8'        // Jenkins 全局工具管理中配置的 JDK 名称
+        maven 'maven3.8.6'  // Jenkins 全局工具配置的 Maven 名称
+        jdk 'jdk1.8'        // Jenkins 全局工具配置的 JDK 名称
     }
 
     environment {
@@ -12,8 +12,8 @@ pipeline {
     }
 
     triggers {
-        githubPush()
-        // pollSCM('@daily') // 可选兜底触发器
+        githubPush() // GitHub 推送触发
+        // pollSCM('@daily') // 可选：每天自动构建一次
     }
 
     stages {
@@ -28,16 +28,8 @@ pipeline {
             steps {
                 echo '🧪 开始执行自动化测试...'
                 lock('build-lock') {
-                    script {
-                        def isRestarted = currentBuild.rawBuild.getExecutor()?.isInterrupted() ?: false
-                        if (isRestarted) {
-                            echo '⚠️ 检测到 Jenkins 重启后的构建恢复，跳过超时控制'
-                            sh 'mvn clean test -B -Dsurefire.printSummary=true | tee mvn-output.log'
-                        } else {
-                            timeout(time: 10, unit: 'MINUTES') {
-                                sh 'mvn clean test -B -Dsurefire.printSummary=true | tee mvn-output.log'
-                            }
-                        }
+                    timeout(time: 10, unit: 'MINUTES') {
+                        sh 'mvn clean test -B -Dsurefire.printSummary=true | tee mvn-output.log'
                     }
                 }
             }
@@ -70,7 +62,7 @@ pipeline {
         }
 
         success {
-            echo '✅ 构建成功！!'
+            echo '✅ 构建成功！'
         }
 
         failure {
