@@ -62,7 +62,7 @@ pipeline {
         }
 
         success {
-            echo '✅ 构建成功！1'
+            echo '✅ 构建成功!!'
         }
 
         failure {
