@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven3.8.6'  // Jenkins 全局工具配置中的名称
-        jdk 'jdk1.8'
+        maven 'maven3.8.6'  // Jenkins 全局工具管理中配置的 Maven 名称
+        jdk 'jdk1.8'        // Jenkins 全局工具管理中配置的 JDK 名称
     }
 
     environment {
@@ -29,12 +29,14 @@ pipeline {
                 echo '🧪 开始执行自动化测试...'
                 lock('build-lock') {
                     script {
-                        try {
+                        def isRestarted = currentBuild.rawBuild.getExecutor()?.isInterrupted() ?: false
+                        if (isRestarted) {
+                            echo '⚠️ 检测到 Jenkins 重启后的构建恢复，跳过超时控制'
+                            sh 'mvn clean test -B -Dsurefire.printSummary=true | tee mvn-output.log'
+                        } else {
                             timeout(time: 10, unit: 'MINUTES') {
                                 sh 'mvn clean test -B -Dsurefire.printSummary=true | tee mvn-output.log'
                             }
-                        } catch (err) {
-                            error "❌ Maven 构建失败，请检查 mvn-output.log 中的错误详情"
                         }
                     }
                 }
@@ -43,7 +45,7 @@ pipeline {
 
         stage('📊 生成 Allure 报告') {
             steps {
-                echo '📊 尝试生成 Allure 报告...'
+                echo '📊 正在生成 Allure 报告...'
                 sh 'ls -lh target/allure-results || echo "⚠️ 未找到 Allure 结果文件"'
                 allure([
                     includeProperties: false,
@@ -54,7 +56,7 @@ pipeline {
 
         stage('📦 归档构建产物') {
             steps {
-                echo '📦 保存测试产物...'
+                echo '📦 保存构建产物和测试报告...'
                 archiveArtifacts artifacts: '**/target/**/*.log', allowEmptyArchive: true
                 junit '**/target/surefire-reports/*.xml'
             }
