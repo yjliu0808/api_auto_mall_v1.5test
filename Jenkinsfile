@@ -2,17 +2,18 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven3.8.6'
+        maven 'maven3.8.6'  // Jenkins 全局工具配置中的名称
         jdk 'jdk1.8'
     }
 
     environment {
-        MAVEN_OPTS = '-Xmx1024m'
+        MAVEN_OPTS = '-Xms256m -Xmx512m -XX:+UseG1GC'
+        JAVA_OPTS = '-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=86400'
     }
 
     triggers {
         githubPush()
-        // pollSCM('@daily') // 可选：每日定时拉取（备用兜底）
+        // pollSCM('@daily') // 可选兜底触发器
     }
 
     stages {
@@ -26,37 +27,36 @@ pipeline {
         stage('🔧 Build & Test') {
             steps {
                 echo '🧪 开始执行自动化测试...'
-                // 显式指定 bash，避免 sh 不兼容问题
-                sh 'bash -c "mvn clean test"'
-                // 收集单元测试报告，展示到 Jenkins UI
-                junit '**/target/surefire-reports/*.xml'
-            }
-        }
-
-        stage('📊 生成 Allure 报告') {
-            steps {
-                script {
-                    try {
-                        echo '📊 准备展示 Allure 测试报告...'
-                        sh 'ls -l target/allure-results || echo "❗ 未生成 Allure 结果文件"'
-                        allure([
-                            includeProperties: false,
-                            results: [[path: 'target/allure-results']]
-                        ])
-                    } catch (Exception e) {
-                        echo "⚠️ Allure 报告生成失败：${e.message}"
+                lock('build-lock') {
+                    script {
+                        try {
+                            timeout(time: 10, unit: 'MINUTES') {
+                                sh 'mvn clean test -B -Dsurefire.printSummary=true | tee mvn-output.log'
+                            }
+                        } catch (err) {
+                            error "❌ Maven 构建失败，请检查 mvn-output.log 中的错误详情"
+                        }
                     }
                 }
             }
         }
 
-        stage('📦 归档构建产物（可选）') {
-            when {
-                expression { fileExists('target') }
-            }
+        stage('📊 生成 Allure 报告') {
             steps {
-                echo '📦 归档 jar 包或其他产物...'
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                echo '📊 尝试生成 Allure 报告...'
+                sh 'ls -lh target/allure-results || echo "⚠️ 未找到 Allure 结果文件"'
+                allure([
+                    includeProperties: false,
+                    results: [[path: 'target/allure-results']]
+                ])
+            }
+        }
+
+        stage('📦 归档构建产物') {
+            steps {
+                echo '📦 保存测试产物...'
+                archiveArtifacts artifacts: '**/target/**/*.log', allowEmptyArchive: true
+                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
@@ -72,7 +72,7 @@ pipeline {
         }
 
         failure {
-            echo '❌ 构建失败，请检查 Jenkinsfile、网络或测试代码。'
+            echo '❌ 构建失败，请检查 Jenkins 控制台输出或 mvn-output.log。'
         }
     }
 }
