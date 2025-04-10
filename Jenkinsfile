@@ -1,41 +1,62 @@
-pipeline { //声明一个流水线（Pipeline）构建任务
-    agent any  //agent any：允许在任意可用节点（主节点或构建代理）上执行任务
+pipeline {
+    agent any
 
     tools {
-        maven 'maven3.8.6'     // Jenkins 全局配置的 Maven 名
-        jdk 'jdk1.8'            // Jenkins 全局配置的 JDK 名
+        maven 'maven3.8.6'
+        jdk 'jdk1.8'
     }
 
-    triggers { //triggers 块（触发器）
-        githubPush()  //表示每当 GitHub 上有 push 操作时，就自动触发一次构建；
-                      //要生效必须 Jenkins 和 GitHub Webhook 配置正确。
+    environment {
+        MAVEN_OPTS = '-Xmx1024m'
     }
 
-
+    triggers {
+        githubPush()
+        // pollSCM('@daily') // 可选：每日定时拉取（备用兜底）
+    }
 
     stages {
         stage('🧪 Checkout') {
             steps {
                 echo '🔄 拉取代码中...'
-                checkout scm //从你在 Jenkins 项目配置的 Git 仓库拉代码
+                checkout scm
             }
         }
 
         stage('🔧 Build & Test') {
             steps {
                 echo '🧪 开始执行自动化测试...'
-                sh 'mvn clean test'
+                // 显式指定 bash，避免 sh 不兼容问题
+                sh 'bash -c "mvn clean test"'
+                // 收集单元测试报告，展示到 Jenkins UI
+                junit '**/target/surefire-reports/*.xml'
             }
         }
 
         stage('📊 生成 Allure 报告') {
             steps {
-                echo '📊 准备展示 Allure 测试报告...'
-                allure([
-                    includeProperties: false,
-                    jdk: '',
-                    results: [[path: 'target/allure-results']]
-                ])
+                script {
+                    try {
+                        echo '📊 准备展示 Allure 测试报告...'
+                        sh 'ls -l target/allure-results || echo "❗ 未生成 Allure 结果文件"'
+                        allure([
+                            includeProperties: false,
+                            results: [[path: 'target/allure-results']]
+                        ])
+                    } catch (Exception e) {
+                        echo "⚠️ Allure 报告生成失败：${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('📦 归档构建产物（可选）') {
+            when {
+                expression { fileExists('target') }
+            }
+            steps {
+                echo '📦 归档 jar 包或其他产物...'
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
     }
