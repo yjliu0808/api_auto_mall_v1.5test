@@ -11,7 +11,7 @@ pipeline { //声明一个流水线（Pipeline）构建任务
                       //要生效必须 Jenkins 和 GitHub Webhook 配置正确。
     }
 
- 
+
 
     stages {
         stage('🧪 Checkout') {
