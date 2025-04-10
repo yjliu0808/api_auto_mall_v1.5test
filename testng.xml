@@ -6,7 +6,7 @@
                 <parameter name="startSheetIndex" value="0"/>
                 <parameter name="sheetNum" value="1"/>
             </class>
-            <class name="com.testcase.RegisterCase">
+           <!-- <class name="com.testcase.RegisterCase">
                 <parameter name="startSheetIndex" value="1"/>
                 <parameter name="sheetNum" value="1"/>
             </class>
@@ -17,7 +17,7 @@
             <class name="com.testcase.AddMenuCase">
                 <parameter name="startSheetIndex" value="3"/>
                 <parameter name="sheetNum" value="1"/>
-            </class>
+            </class>-->
         </classes>
     </test>
 

@@ -161,6 +161,8 @@
                     </suiteXmlFiles>
                     <!--设置参数命令行 -->
                     <argLine>
+                        <!-- -Xmx512m 表示限制 JVM 最大内存为 512MB -->
+                        -Xmx256m
                         <!-- UTF-8编码 -->
                         -Dfile.encoding=UTF-8
                         <!-- 配置拦截器 -->
