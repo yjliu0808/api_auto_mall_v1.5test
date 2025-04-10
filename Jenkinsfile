@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('🧪 Test GitHub Connection') {
             steps {
-                echo '正在测试 GitHub 连接...'
+                echo '正在测试 GitHub 连接...A'
                 sh 'curl -I https://github.com'
             }
         }
@@ -16,10 +16,10 @@ pipeline {
 
     post {
         success {
-            echo '构建成功！！'
+            echo '构建成功！！!'
         }
         failure {
-            echo ' 构建失败，请排查 Jenkinsfile 或网络问题。'
+            echo ' !构建失败，请排查 Jenkinsfile 或网络问题。'
         }
     }
 }
